@@ -161,6 +161,8 @@ configmap:
     namespaceOverride: ""
     name: "helper-pod"
     annotations: {}
+    custom: false
+    customContent: ""
 
 # Number of provisioner worker threads to call provision/delete simultaneously.
 # workerThreads: 4

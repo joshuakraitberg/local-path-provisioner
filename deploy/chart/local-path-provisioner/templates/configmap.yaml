@@ -34,6 +34,9 @@ data:
   teardown: |-
     {{- .Values.configmap.teardown | nindent 4 }}
   helperPod.yaml: |-
+    {{- if .Values.configmap.helperPod.custom }}
+    {{- .Values.configmap.helperPod.customContent | nindent 4 }}
+    {{- else }}
     apiVersion: v1
     kind: Pod
     metadata:
@@ -59,4 +62,5 @@ data:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           resources:
             {{- toYaml .Values.helperPod.resources | nindent 12 }}
+    {{- end }}
 
